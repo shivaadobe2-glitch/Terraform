@@ -44,9 +44,9 @@ resource "aws_instance" "My-first-machine" {
     subnet_id = data.aws_subnets.selected_subnet.ids[0]
     tags = {
       name = "Terraform-ins${count.index + 1}"
-    }
+    }   
     associate_public_ip_address = false
   
 }
 
-output "my-final-output" {value = aws_instance.My-first-machine.id}
+output "my-final-output" {value = aws_instance.My-first-machine[*].id}
